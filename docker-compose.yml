@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  djangoapp:
+    container_name: djangoapp
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=django-insecure-!19hudv*qo!i7ga^!c)@_ptk#%#%9m+n%95#2p2xa#u45s2e&m
+      - PG_USER=hsm_db_admin
+      - PG_PASSWORD=112233
+      - PG_DB=hms_db
+      - PG_PORT=5432
+      - PG_HOST=db
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres:12
+    environment:
+      - POSTGRES_DB=hms_db
+      - POSTGRES_USER=hms_db_admin
+      - POSTGRES_PASSWORD=112233
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}
