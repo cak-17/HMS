@@ -49,7 +49,7 @@ class Reservation(models.Model):
 
 
     def __str__(self):
-        return f"{self.guest} | {self.confirmation_code} | {self.check_in}"
+        return f"{self.guest} | {self.confirmation_code} / {self.check_in} [{self.room.number}]"
 
     def get_Reservation_status(self):
         return Reservation.ReservationStatus(self.status).label

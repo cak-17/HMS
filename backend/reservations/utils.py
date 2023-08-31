@@ -12,9 +12,9 @@ def get_availability_by_category(room_category_slug, check_in, check_out, num_of
         #room__category__capacity__lt=num_of_guests,
     )
     print(conflicting_reservations)
-    print(conflicting_reservations.filter(room__status=Room.RoomStatus.OOO))
+
     booked_rooms_id = conflicting_reservations.values('room_id')
     print(booked_rooms_id)
-    available_rooms = Room.objects.filter(category__slug=room_category_slug).exclude(id__in=booked_rooms_id)
+    available_rooms = Room.objects.filter(category__slug=room_category_slug).exclude(id__in=booked_rooms_id, status=5) 
     print(available_rooms)
     return available_rooms
