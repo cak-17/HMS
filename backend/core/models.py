@@ -42,7 +42,17 @@ class GuestAddress(models.Model):
     city = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
 
-class Guests(models.Model):
+    def __str__(self):
+        return f"{self.street}"
+
+class Guest(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.OneToOneField(GuestAddress, on_delete=models.CASCADE)
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def __str__(self):
+        return self.full_name
