@@ -82,10 +82,19 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "OPTIONS": {
+            "service": "my_service",
+            "passfile": ".my_pgpass",
+        },
+    }
+}
+'''
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql_psycopg2'),
+        'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql'),
         'USER': os.environ.get('PG_USER','postgres'),
         'PASSWORD':os.environ.get('PG_PASSWORD','postgres'),
         'NAME': os.environ.get('PG_DB','postgres'),
@@ -94,7 +103,7 @@ DATABASES = {
         'ATOMIC_REQUESTS': True,
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

@@ -8,7 +8,9 @@ WORKDIR /app
 
 # Install app dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+RUN pip install --upgrade pip \
+    pip install -r requirements.txt --trusted-host pypi.python.org
 
 # Bundle app source
 COPY . .
