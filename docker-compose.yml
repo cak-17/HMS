@@ -3,7 +3,9 @@ version: "3.9"
 services:
   backend:
     container_name: api
-    build: .
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
     ports:
       - "8000:8000"
     environment:
@@ -28,6 +30,17 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  frontend:
+    container_name: react
+    build:
+      context: .
+      dockerfile: ./docker/frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
 
 volumes:
   pgdata: {}

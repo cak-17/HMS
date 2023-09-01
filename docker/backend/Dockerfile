@@ -13,7 +13,7 @@ RUN pip install --upgrade pip \
     pip install -r requirements.txt --trusted-host pypi.python.org
 
 # Bundle app source
-COPY . .
+COPY backend .
 
 # Expose port
 EXPOSE 8000

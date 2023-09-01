@@ -7,5 +7,6 @@ router.register(r"", views.RoomViewSet)
 router.register(r"category", views.RoomCategoryViewSet, basename="roomcategory") 
 
 urlpatterns = [
+    path("check_avail/", views.check_avail, name="chekc_avail"),
     path("", include(router.urls))
 ]

@@ -6,6 +6,5 @@ router = DefaultRouter()
 router.register(r"", views.ReservationViewSet)
 
 urlpatterns = [
-    path("check_avail/", views.check_avail, name="chekc_avail"),
     path("", include(router.urls)),
 ]

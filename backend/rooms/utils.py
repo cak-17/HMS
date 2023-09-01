@@ -1,6 +1,6 @@
 from django.db.models import Q
 
-from .models import Reservation
+from reservations.models import Reservation
 from rooms.models import Room
 
 def get_availability_by_category(room_category_slug, check_in, check_out, num_of_guests=1):
@@ -15,6 +15,7 @@ def get_availability_by_category(room_category_slug, check_in, check_out, num_of
 
     booked_rooms_id = conflicting_reservations.values('room_id')
     print(booked_rooms_id)
-    available_rooms = Room.objects.filter(category__slug=room_category_slug).exclude(id__in=booked_rooms_id, status=5) 
+    available_rooms = Room.objects.filter(category__slug=room_category_slug).exclude(id__in=booked_rooms_id).exclude(status=5)
     print(available_rooms)
+    
     return available_rooms
