@@ -45,4 +45,55 @@ class ApiRepository {
   }
 }
 
+// api/RoomsApi.js
+class RoomsApi {
+  constructor(axiosInstance) {
+    this.axios = axiosInstance;
+  }
+
+  async getAllRooms() {
+    // ...
+  }
+
+  async getAvailableRooms(startDate, endDate) {
+    // ...
+  }
+
+  // Other room-related methods...
+}
+
+// api/GuestsApi.js
+class GuestsApi {
+  constructor(axiosInstance) {
+    this.axios = axiosInstance;
+  }
+
+  async getAllGuests() {
+    // ...
+  }
+
+  async getGuestReservations(guestId) {
+    // ...
+  }
+
+  // Other guest-related methods...
+}
+
+// api/ReservationsApi.js
+class ReservationsApi {
+  constructor(axiosInstance) {
+    this.axios = axiosInstance;
+  }
+
+  async getAllReservations() {
+    // ...
+  }
+
+  async createReservation(newReservationData) {
+    // ...
+  }
+
+  // Other reservation-related methods...
+}
+
 export default ApiRepository;
